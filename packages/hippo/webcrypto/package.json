@@ -1,0 +1,9 @@
+{
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts",
+      "flatModuleFile": "hippo-webcrypto",
+      "umdId": "hippo.webcrypto"
+    }
+  }
+}

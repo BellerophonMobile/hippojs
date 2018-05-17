@@ -1,0 +1,12 @@
+{
+  "name": "@bellerophon-mobile/angular-hippo",
+  "version": "0.1.0",
+  "description": "Angular wrappers for cryptography functions, with a simple chained certificate",
+  "author": "Bellerophon Mobile, LLC.",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@bellerophon/hippo": "0.1.0"
+  }
+}

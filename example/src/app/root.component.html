@@ -1,0 +1,39 @@
+<p *ngIf="error">Error: {{ error }}</p>
+
+<h1>Generate ECDSA Credentials</h1>
+
+<button type="button" (click)="generateCredentials()">Generate Credentials</button>
+
+<div *ngIf="publicKey">
+  Public Key:
+  <pre>{{ publicKey }}</pre>
+</div>
+<div *ngIf="privateKey">
+  Private Key:
+  <pre>{{ privateKey }}</pre>
+</div>
+
+<h1>Parse Certificate</h1>
+
+<form (ngSubmit)="parseCertificate()" [formGroup]="certificateForm">
+  <p>Certificate JSON:</p>
+  <textarea formControlName="json"></textarea>
+
+  <button type="submit">Parse</button>
+
+  <ol *ngIf="certificate">
+    <li *ngFor="let declaration of certificate!.declarations; let i = index">
+      <b>Signer</b>: {{ declaration.signer }}<br>
+      <b>Signature</b>: {{ declaration.signature }}<br>
+      <b>ID</b>: {{ testaments[i].id }}<br>
+      <b>Subject ID</b>: {{ testaments[i].subject.id }}<br>
+      <b>Claims</b>:
+      <ul>
+        <li *ngFor="let claim of claimPairs[i]">
+          <b>{{ claim.key }}</b>: {{ claim.value }}
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+</form>

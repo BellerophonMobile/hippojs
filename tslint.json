@@ -1,0 +1,51 @@
+{
+ "extends": [
+  "tslint-angular"
+ ],
+ "rulesDirectory": [
+  "codelyzer",
+  "rxjs-tslint"
+ ],
+ "rules": {
+  "linebreak-style": [
+   true,
+   "LF"
+  ],
+  "max-classes-per-file": false,
+  "no-conditional-assignment": true,
+  "object-literal-key-quotes": [
+   true,
+   "as-needed"
+  ],
+  "ordered-imports": true,
+  "prefer-readonly": true,
+  "semicolon": [
+   true,
+   "never"
+  ],
+  "trailing-comma": [
+   true,
+   {
+    "multiline": "always",
+    "singleline": "never"
+   }
+  ],
+
+  "angular-whitespace": [
+   true,
+   "check-interpolation",
+   "check-pipe",
+   "check-semicolon"
+  ],
+  "enforce-component-selector": true,
+  "no-conflicting-life-cycle-hooks": true,
+  "no-forward-ref": true,
+  "no-life-cycle-call": true,
+  "prefer-output-readonly": true,
+
+  "rxjs-collapse-imports": true,
+  "rxjs-no-static-observable-methods": true,
+  "rxjs-pipeable-operators-only": true,
+  "rxjs-proper-imports": true
+ }
+}
