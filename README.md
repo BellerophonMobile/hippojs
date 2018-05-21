@@ -1,5 +1,7 @@
 # HippoCryptoJS
 
+[![Build Status](https://travis-ci.org/BellerophonMobile/hippojs.svg?branch=master)](https://travis-ci.org/BellerophonMobile/hippojs)
+
 TypeScript/JavaScript port of
 [HippoCrypto](https://github.com/BellerophonMobile/hippo).
 
