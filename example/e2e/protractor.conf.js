@@ -28,3 +28,9 @@ exports.config = {
       .addReporter(new SpecReporter({ spec: { displayStacktrace: true } }))
   }
 };
+
+// Optionally use Puppeteer's Chrome binary if installed.
+try {
+  const chromePath = require('puppeteer').executablePath()
+  exports.config.capabilities.chromeOptions.binary = chromePath
+} catch (err) {}

@@ -6,6 +6,7 @@ before_install:
   - npm install --global npm@latest
 install:
   - npm ci
+  - npm install puppeteer
 
 cache:
   directories:
@@ -15,6 +16,8 @@ script:
   - npm run lint || travis_terminate 1
 
   - npm run build:prod || travis_terminate 1
+
+  - "export CHROME_BIN=$(node -e \"console.log(require('puppeteer').executablePath())\")"
 
   - npm run test -- hippo --browsers ChromeHeadlessNoSandbox || travis_terminate 1
   - npm run test -- angular --browsers ChromeHeadlessNoSandbox || travis_terminate 1
