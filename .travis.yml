@@ -1,13 +1,16 @@
 language: node_js
 node_js:
   - node
+
 before_install:
   - npm install --global npm@latest
 install:
   - npm ci
+
 cache:
   directories:
     - "$HOME/.npm"
+
 script:
   - npm run lint || travis_terminate 1
 
@@ -20,10 +23,16 @@ script:
   - sed -i "s/chromeOptions:.*/chromeOptions: { args: ['--headless', '--no-sandbox'] },/g" example/e2e/protractor.conf.js
   - npm run e2e || travis_terminate 1
 
+before_deploy:
   - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> "$HOME/.npmrc"
 
   - cd dist/hippo
-  - npm publish --access public || travis_terminate 1
+  - npm publish --access public
 
   - cd ../angular
-  - npm publish --access public || travis_terminate 1
+  - npm publish --access public
+deploy:
+  provider: script
+  skip_cleanup: true
+  on:
+    tags: true
