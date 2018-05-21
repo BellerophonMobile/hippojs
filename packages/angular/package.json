@@ -4,6 +4,10 @@
   "description": "Angular wrappers for cryptography functions, with a simple chained certificate",
   "author": "Bellerophon Mobile, LLC.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BellerophonMobile/hippojs.git"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/core": "^6.0.0",

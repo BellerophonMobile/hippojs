@@ -4,5 +4,9 @@
   "description": "Wrappers for cryptography functions, with a simple chained certificate.",
   "author": "Bellerophon Mobile, LLC.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BellerophonMobile/hippojs.git"
+  },
   "sideEffects": false
 }

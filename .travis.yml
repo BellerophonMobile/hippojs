@@ -25,6 +25,8 @@ script:
 
 before_deploy:
   - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> "$HOME/.npmrc"
+  - cp README.md dist/hippo
+  - cp README.md dist/angular
 
   - cd dist/hippo
   - npm publish --access public
