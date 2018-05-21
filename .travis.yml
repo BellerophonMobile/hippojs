@@ -20,7 +20,7 @@ script:
   - npm run test -- angular --browsers ChromeHeadlessNoSandbox || travis_terminate 1
   - npm run test -- example --browsers ChromeHeadlessNoSandbox || travis_terminate 1
 
-  - sed -i "s/chromeOptions:.*/chromeOptions: { args: ['--headless', '--no-sandbox'] },/g" example/e2e/protractor.conf.js
+  - "sed -i \"s/chromeOptions:.*/chromeOptions: { args: ['--headless', '--no-sandbox'] },/g\" example/e2e/protractor.conf.js"
   - npm run e2e || travis_terminate 1
 
 before_deploy:
