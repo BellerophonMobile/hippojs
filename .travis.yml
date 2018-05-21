@@ -9,21 +9,21 @@ cache:
   directories:
     - "$HOME/.npm"
 script:
-  - npm run lint
+  - npm run lint || travis_terminate 1
 
-  - npm run build:prod
+  - npm run build:prod || travis_terminate 1
 
-  - npm run test -- hippo --browsers ChromeHeadlessNoSandbox
-  - npm run test -- angular --browsers ChromeHeadlessNoSandbox
-  - npm run test -- example --browsers ChromeHeadlessNoSandbox
+  - npm run test -- hippo --browsers ChromeHeadlessNoSandbox || travis_terminate 1
+  - npm run test -- angular --browsers ChromeHeadlessNoSandbox || travis_terminate 1
+  - npm run test -- example --browsers ChromeHeadlessNoSandbox || travis_terminate 1
 
   - sed -i "s/chromeOptions:.*/chromeOptions: { args: ['--headless', '--no-sandbox'] },/g" example/e2e/protractor.conf.js
-  - npm run e2e
+  - npm run e2e || travis_terminate 1
 
   - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> "$HOME/.npmrc"
 
   - cd dist/hippo
-  - npm publish --access public
+  - npm publish --access public || travis_terminate 1
 
   - cd ../angular
-  - npm publish --access public
+  - npm publish --access public || travis_terminate 1
