@@ -10,8 +10,14 @@ cache:
     - "$HOME/.npm"
 script:
   - npm run lint
+
   - npm run build:prod
-  - npm run test
+
+  - npm run test -- hippo --browsers ChromeHeadlessNoSandbox
+  - npm run test -- angular --browsers ChromeHeadlessNoSandbox
+  - npm run test -- example --browsers ChromeHeadlessNoSandbox
+
+  - sed -i "s/chromeOptions:.*/chromeOptions: { args: ['--headless', '--no-sandbox'] },/g" example/e2e/protractor.conf.js
   - npm run e2e
 
   - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> "$HOME/.npmrc"
