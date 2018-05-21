@@ -1,6 +1,6 @@
 {
   "name": "hippo-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Wrappers for cryptography functions, with a simple chained certificate",
   "author": "Bellerophon Mobile, LLC.",
   "license": "MIT",
