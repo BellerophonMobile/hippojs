@@ -6,9 +6,6 @@
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"
-    },
-    "@angular-devkit/build-angular:tslint": {
-      "fix": true
     }
   },
   "projects": {
