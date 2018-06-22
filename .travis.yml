@@ -38,6 +38,7 @@ before_deploy:
   - npm publish --access public
 deploy:
   provider: script
+  script: "true"
   skip_cleanup: true
   on:
     tags: true
