@@ -55,17 +55,29 @@ export class Certificate {
     const cert = JSON.parse(json)
     validateTypes(cert, { Declarations: 'array' })
 
-    const declarations = cert.Declarations.map((decl: any) => {
-      validateTypes(decl, {
+    const declarations = cert.Declarations.map((d: any) => {
+      validateTypes(d, {
         Claim: 'string',
         Signer: 'string',
         Signature: 'string',
       })
 
-      return new Declaration(decl.Claim, decl.Signer, decl.Signature)
+      return new Declaration(d.Claim, d.Signer, d.Signature)
     })
 
     return new Certificate(declarations)
+  }
+
+  /* toJSON serializes a certificate to a JSON string. */
+  toJSON(): string {
+    const json = {
+      Declarations: this.declarations.map(d => ({
+        Claim: d.claim,
+        Signer: d.signer,
+        Signature: d.signature,
+      })),
+    }
+    return JSON.stringify(json)
   }
 }
 
