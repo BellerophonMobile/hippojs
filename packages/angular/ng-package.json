@@ -5,6 +5,6 @@
   "lib": {
     "entryFile": "src/public_api.ts",
     "flatModuleFile": "hippo-angular",
-    "umdId": "Hippo.Angular"
+    "umdId": "hippo.angular"
   }
 }
