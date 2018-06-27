@@ -2,6 +2,8 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/angular",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "flatModuleFile": "hippo-angular",
+    "umdId": "Hippo.Angular"
   }
 }

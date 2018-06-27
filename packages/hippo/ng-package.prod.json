@@ -3,6 +3,7 @@
   "dest": "../../dist/hippo",
   "lib": {
     "entryFile": "src/public_api.ts",
+    "flatModuleFile": "hippo",
     "umdId": "Hippo"
   }
 }
