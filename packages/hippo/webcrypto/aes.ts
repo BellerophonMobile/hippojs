@@ -17,8 +17,8 @@ const GCM_STANDARD_NONCE_SIZE = 12
 
 const PBKDF2_NAME = 'PBKDF2'
 const PBKDF2_ITERATIONS = 250000
-const PBKDF2_HASH = { name: 'SHA-512' }
 const PBKDF2_LENGTH = 256
+const PBKDF2_HASH = 'SHA-512'
 
 function nameForAlgorithm(algorithm: AESAlgorithms): string {
   switch (algorithm) {
@@ -81,6 +81,12 @@ export class AESSKCipher implements SKCipher {
   }
 }
 
+export interface PassphraseOptions {
+  iterations: number
+  length: number
+  hash: string
+}
+
 export class AESSKCipherer implements SKCipherer {
   constructor(
     public readonly algorithm: AESAlgorithms,
@@ -97,7 +103,15 @@ export class AESSKCipherer implements SKCipherer {
     return new AESSKCipher(this.algorithm, key)
   }
 
-  async generateFromPassphrase(passphrase: string, salt: string): Promise<SKCipher> {
+  async generateFromPassphrase(passphrase: string, salt: string, options?: PassphraseOptions): Promise<SKCipher> {
+    const o: PassphraseOptions = {
+      iterations: PBKDF2_ITERATIONS,
+      length: PBKDF2_LENGTH,
+      hash: PBKDF2_HASH,
+
+      ...options,
+    }
+
     const encoder = new TextEncoder()
 
     const rawBuf = encoder.encode(passphrase)
@@ -113,13 +127,13 @@ export class AESSKCipherer implements SKCipherer {
     const params = {
       name: PBKDF2_NAME,
       salt: saltBuf,
-      iterations: PBKDF2_ITERATIONS,
-      hash: PBKDF2_HASH,
+      iterations: o.iterations,
+      hash: { name: o.hash },
     }
 
     const derivedParams = {
       name: nameForAlgorithm(this.algorithm),
-      length: PBKDF2_LENGTH,
+      length: o.length,
     }
 
     const key = await subtle.deriveKey(
