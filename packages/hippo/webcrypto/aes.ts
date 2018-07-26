@@ -20,18 +20,6 @@ const PBKDF2_ITERATIONS = 250000
 const PBKDF2_HASH = { name: 'SHA-512' }
 const PBKDF2_LENGTH = 256
 
-// These won't be required once we update to TypeScript 2.8.
-
-interface TextEncoder {
-    readonly encoding: string
-    encode(input?: string): Uint8Array
-}
-
-declare var TextEncoder: {
-    prototype: TextEncoder
-    new(): TextEncoder;
-}
-
 function nameForAlgorithm(algorithm: AESAlgorithms): string {
   switch (algorithm) {
     case AES_256_CBC:
