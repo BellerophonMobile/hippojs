@@ -1,10 +1,10 @@
 import { inject, TestBed } from '@angular/core/testing'
 
-import { ExtractableToken } from '@bellerophon-mobile/angular-hippo'
 import { PrivateKey, PublicKey } from '@bellerophon-mobile/hippo'
 import { ECDSACredentials } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { CredentialService } from './credential.service'
+import { WebCryptoCredentialService } from './credential.service'
+import { ExtractableToken } from './extractable.token'
 
 const testPublicKey = new PublicKey('ecdsa-p256', {
   X: 'pN4RYMAZLal1El53tTWu51514Oz4ITUAM-Tuw96iocY',
@@ -17,22 +17,22 @@ const testPrivateKey = new PrivateKey('ecdsa-p256', {
   Y: 'ihQBD4QCIt0oE0nR45BQWg-3QB9q8qhxVUg8T_aMHAw',
 })
 
-describe('CredentialService', () => {
+describe('WebCryptoCredentialService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         { provide: ExtractableToken, useValue: true },
-        CredentialService,
+        WebCryptoCredentialService,
       ],
     })
   })
 
-  let service: CredentialService
+  let service: WebCryptoCredentialService
 
-  beforeEach(inject([CredentialService], (s: CredentialService) => service = s))
+  beforeEach(inject([WebCryptoCredentialService], (s: WebCryptoCredentialService) => service = s))
 
   it('should be created', () => {
-    expect(service instanceof CredentialService).toBeTruthy()
+    expect(service instanceof WebCryptoCredentialService).toBeTruthy()
   })
 
   it('should generate ECDSA-P256 credentials', async () => {

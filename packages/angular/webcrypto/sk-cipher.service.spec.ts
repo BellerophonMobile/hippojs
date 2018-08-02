@@ -1,30 +1,30 @@
 import { inject, TestBed } from '@angular/core/testing'
 
-import { ExtractableToken } from '@bellerophon-mobile/angular-hippo'
 import { PrivateKey } from '@bellerophon-mobile/hippo'
 import { AESSKCipher } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { SKCipherService } from './sk-cipher.service'
+import { ExtractableToken } from './extractable.token'
+import { WebCryptoSKCipherService } from './sk-cipher.service'
 
 const testCBCKey = new PrivateKey('aes-256-cbc', 'FbVNOra6lvpnAeqyHO-sllTJiFGBe0YjiqyNvqTChPg')
 const testGCMKey = new PrivateKey('aes-256-gcm', 'FbVNOra6lvpnAeqyHO-sllTJiFGBe0YjiqyNvqTChPg')
 
-describe('SKCipherService', () => {
+describe('WebCryptoSKCipherService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         { provide: ExtractableToken, useValue: true },
-        SKCipherService,
+        WebCryptoSKCipherService,
       ],
     })
   })
 
-  let service: SKCipherService
+  let service: WebCryptoSKCipherService
 
-  beforeEach(inject([SKCipherService], (s: SKCipherService) => service = s))
+  beforeEach(inject([WebCryptoSKCipherService], (s: WebCryptoSKCipherService) => service = s))
 
   it('should be created', () => {
-    expect(service instanceof SKCipherService).toBeTruthy()
+    expect(service instanceof WebCryptoSKCipherService).toBeTruthy()
   })
 
   it('should generate an AES-256-CBC cipher', async () => {

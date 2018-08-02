@@ -1,10 +1,10 @@
 import { inject, TestBed } from '@angular/core/testing'
 
-import { ExtractableToken } from '@bellerophon-mobile/angular-hippo'
 import { PrivateKey, PublicKey } from '@bellerophon-mobile/hippo'
 import { RSAPKCipher } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { PKCipherService } from './pk-cipher.service'
+import { ExtractableToken } from './extractable.token'
+import { WebCryptoPKCipherService } from './pk-cipher.service'
 
 // tslint:disable:max-line-length
 const testPublicKey = new PublicKey('rsa-oaep-2048', {
@@ -24,22 +24,22 @@ const testPrivateKey = new PrivateKey('rsa-oaep-2048', {
 })
 // tslint:enable:max-line-length
 
-describe('PKCipherService', () => {
+describe('WebCryptoPKCipherService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         { provide: ExtractableToken, useValue: true },
-        PKCipherService,
+        WebCryptoPKCipherService,
       ],
     })
   })
 
-  let service: PKCipherService
+  let service: WebCryptoPKCipherService
 
-  beforeEach(inject([PKCipherService], (s: PKCipherService) => service = s))
+  beforeEach(inject([WebCryptoPKCipherService], (s: WebCryptoPKCipherService) => service = s))
 
   it('should be created', () => {
-    expect(service instanceof PKCipherService).toBeTruthy()
+    expect(service instanceof WebCryptoPKCipherService).toBeTruthy()
   })
 
   it('should generate an RSA-OAEP-2048 cipher', async () => {

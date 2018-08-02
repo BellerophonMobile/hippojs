@@ -70,7 +70,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "packages/angular/src/test.ts",
+            "main": "packages/angular/test.ts",
             "tsConfig": "packages/angular/tsconfig.spec.json",
             "karmaConfig": "packages/angular/karma.conf.js"
           }
