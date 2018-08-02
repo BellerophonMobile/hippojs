@@ -36,10 +36,7 @@ export class Declaration {
       id: tst.ID,
       subject: {
         id: tst.Subject.ID,
-        publicKey: new PublicKey(
-          tst.Subject.PublicKey.Algorithm,
-          tst.Subject.PublicKey.Public,
-        ),
+        publicKey: PublicKey.fromJSON(tst.Subject.PublicKey),
       },
       claims: tst.Claims,
     }
@@ -50,12 +47,11 @@ export class Declaration {
 export class Certificate {
   constructor(public readonly declarations: Declaration[]) {}
 
-  /* fromJSON parses a certificate from the given JSON string. */
-  static fromJSON(json: string): Certificate {
-    const cert = JSON.parse(json)
-    validateTypes(cert, { Declarations: 'array' })
+  /* fromJSON parses a certificate from its canonical JSON representation. */
+  static fromJSON(data: CertificateJSON): Certificate {
+    validateTypes(data, { Declarations: 'array' })
 
-    const declarations = cert.Declarations.map((d: any) => {
+    const declarations = data.Declarations.map((d: any) => {
       validateTypes(d, {
         Claim: 'string',
         Signer: 'string',
@@ -68,27 +64,36 @@ export class Certificate {
     return new Certificate(declarations)
   }
 
-  /* toJSON serializes a certificate to a JSON string. */
-  toJSON(): string {
-    const json = {
+  /* toJSON serializes a certificate to its canonical JSON representation. */
+  toJSON(): CertificateJSON {
+    return {
       Declarations: this.declarations.map(d => ({
         Claim: d.claim,
         Signer: d.signer,
         Signature: d.signature,
       })),
     }
-    return JSON.stringify(json)
   }
+
+}
+
+/* CertificateJSON is the canonical JSON serialization of a Certificate. */
+export interface CertificateJSON {
+  readonly Declarations: {
+    readonly Claim: string,
+    readonly Signer: string,
+    readonly Signature: string,
+  }[]
 }
 
 /* Testament captures an assertion about a given subject. */
 export interface Testament {
-  id: string
-  subject: {
-    id: string
-    publicKey: PublicKey;
+  readonly id: string
+  readonly subject: {
+    readonly id: string
+    readonly publicKey: PublicKey;
   }
-  claims: {
-    [key: string]: any;
+  readonly claims: {
+    readonly [key: string]: any;
   }
 }

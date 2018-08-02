@@ -35,6 +35,9 @@ function checkType(value: any, type: string): boolean {
     case 'number':
       return typeof value === 'number'
 
+    case 'defined':
+      return typeof value !== 'undefined' && value !== null
+
     default:
       throw new Error(`invalid type argument: "${type}"`)
   }
