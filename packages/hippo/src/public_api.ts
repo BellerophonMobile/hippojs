@@ -1,3 +1,4 @@
+export * from './algorithms'
 export * from './certificate'
 export * from './credentials'
 export * from './keys'

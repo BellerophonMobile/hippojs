@@ -1,11 +1,11 @@
-import { Credentialer, Credentials, PrivateKey, PublicKey, Signer,
-         Verifier } from '@bellerophon-mobile/hippo'
+import {
+  Credentialer, Credentials, ECDSA_P256, PrivateKey, PublicKey, Signer,
+  Verifier,
+} from '@bellerophon-mobile/hippo'
 
-import { exportJWK, KEY_USAGE_CREDENTIALER, KEY_USAGE_SIGN, KEY_USAGE_VERIFY,
-         subtle} from './subtle'
-
-/* Algorithm identifier for ECDSA-P256. */
-export const ECDSA_P256 = 'ecdsa-p256'
+import {
+  exportJWK, KEY_USAGE_CREDENTIALER, KEY_USAGE_SIGN, KEY_USAGE_VERIFY, subtle,
+} from './subtle'
 
 const ECDSA_KEY_GEN_PARAMS: EcKeyGenParams = {
   name: 'ECDSA',

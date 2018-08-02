@@ -1,11 +1,11 @@
-import { PrivateKey, SKCipher, SKCipherer } from '@bellerophon-mobile/hippo'
+import {
+  AES_256_CBC, AES_256_GCM, PrivateKey, SKCipher, SKCipherer,
+} from '@bellerophon-mobile/hippo'
 
 import { concatBuffers } from './buffers'
-import { exportJWK, KEY_USAGE_CIPHERER, KEY_USAGE_DERIVE,
-         subtle } from './subtle'
-
-export const AES_256_CBC = 'aes-256-cbc'
-export const AES_256_GCM = 'aes-256-gcm'
+import {
+  exportJWK, KEY_USAGE_CIPHERER, KEY_USAGE_DERIVE, subtle,
+} from './subtle'
 
 export type AESAlgorithms = 'aes-256-cbc' | 'aes-256-gcm'
 

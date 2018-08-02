@@ -1,11 +1,9 @@
 import { Inject, Injectable, Optional } from '@angular/core'
 
 import {
-  PrivateKey, SKCipher, SKCiphererFactory,
+  AES_256_CBC, AES_256_GCM, PrivateKey, SKCipher, SKCiphererFactory,
 } from '@bellerophon-mobile/hippo'
-import {
-  AES_256_CBC, AES_256_GCM, AESSKCipherer,
-} from '@bellerophon-mobile/hippo/webcrypto'
+import { AESSKCipherer } from '@bellerophon-mobile/hippo/webcrypto'
 
 import { ExtractableToken } from './extractable.token'
 

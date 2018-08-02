@@ -1,10 +1,11 @@
-import { Decrypter, Encrypter, PKCipher, PKCipherer, PrivateKey,
-         PublicKey } from '@bellerophon-mobile/hippo'
+import {
+  Decrypter, Encrypter, PKCipher, PKCipherer, PrivateKey, PublicKey,
+  RSA_OAEP_2048,
+} from '@bellerophon-mobile/hippo'
 
-import { exportJWK, KEY_USAGE_CIPHERER, KEY_USAGE_DECRYPT, KEY_USAGE_ENCRYPT,
-         subtle } from './subtle'
-
-export const RSA_OAEP_2048 = 'rsa-oaep-2048'
+import {
+  exportJWK, KEY_USAGE_CIPHERER, KEY_USAGE_DECRYPT, KEY_USAGE_ENCRYPT, subtle,
+} from './subtle'
 
 const RSA_PARAMS: RsaOaepParams = {
   name: 'RSA-OAEP',

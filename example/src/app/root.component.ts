@@ -6,7 +6,7 @@ import { finalize, switchMap } from 'rxjs/operators'
 
 import { CredentialService } from '@bellerophon-mobile/angular-hippo'
 import { Certificate, Testament } from '@bellerophon-mobile/hippo'
-import { ECDSA_P256 } from '@bellerophon-mobile/hippo/webcrypto'
+import { ECDSA_P256 } from '@bellerophon-mobile/hippo'
 
 @Component({
   selector: 'app-root',
