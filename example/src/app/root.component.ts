@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 
 import { forkJoin, from, Subscription } from 'rxjs'
@@ -13,7 +13,7 @@ import { ECDSA_P256 } from '@bellerophon-mobile/hippo/webcrypto'
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.scss'],
 })
-export class RootComponent implements OnDestroy {
+export class RootComponent implements OnInit, OnDestroy {
   constructor(
     private readonly credentialService: CredentialService,
     private readonly formBuilder: FormBuilder,
@@ -31,6 +31,10 @@ export class RootComponent implements OnDestroy {
   publicKey = ''
   privateKey = ''
   error = ''
+
+  ngOnInit(): void {
+    console.log('Credential Service:', this.credentialService)
+  }
 
   ngOnDestroy(): void {
     if (this.credentialsSub) {

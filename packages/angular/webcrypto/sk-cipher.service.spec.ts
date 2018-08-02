@@ -1,9 +1,9 @@
 import { inject, TestBed } from '@angular/core/testing'
 
+import { ExtractableToken } from '@bellerophon-mobile/angular-hippo'
 import { PrivateKey } from '@bellerophon-mobile/hippo'
 import { AESSKCipher } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { ExtractableToken } from './extractable.token'
 import { SKCipherService } from './sk-cipher.service'
 
 const testCBCKey = new PrivateKey('aes-256-cbc', 'FbVNOra6lvpnAeqyHO-sllTJiFGBe0YjiqyNvqTChPg')

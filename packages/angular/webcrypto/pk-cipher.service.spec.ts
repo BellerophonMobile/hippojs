@@ -1,9 +1,9 @@
 import { inject, TestBed } from '@angular/core/testing'
 
+import { ExtractableToken } from '@bellerophon-mobile/angular-hippo'
 import { PrivateKey, PublicKey } from '@bellerophon-mobile/hippo'
 import { RSAPKCipher } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { ExtractableToken } from './extractable.token'
 import { PKCipherService } from './pk-cipher.service'
 
 // tslint:disable:max-line-length

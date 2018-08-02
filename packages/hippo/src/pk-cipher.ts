@@ -60,6 +60,11 @@ export interface PKCipherer {
  * implementations.
  */
 export class PKCiphererFactory extends AlgorithmFactory<PKCipherer> {
+  /* Creates a new factory with the given PKCipherers */
+  constructor(...cipherers: PKCipherer[]) {
+    super(...cipherers)
+  }
+
   /* generate creates a new PKCipher with the given algorithm. */
   generate(algorithm: string): Promise<PKCipher> {
     return this.get(algorithm).generate()

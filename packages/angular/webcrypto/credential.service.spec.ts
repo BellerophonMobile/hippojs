@@ -1,10 +1,10 @@
 import { inject, TestBed } from '@angular/core/testing'
 
+import { ExtractableToken } from '@bellerophon-mobile/angular-hippo'
 import { PrivateKey, PublicKey } from '@bellerophon-mobile/hippo'
 import { ECDSACredentials } from '@bellerophon-mobile/hippo/webcrypto'
 
 import { CredentialService } from './credential.service'
-import { ExtractableToken } from './extractable.token'
 
 const testPublicKey = new PublicKey('ecdsa-p256', {
   X: 'pN4RYMAZLal1El53tTWu51514Oz4ITUAM-Tuw96iocY',

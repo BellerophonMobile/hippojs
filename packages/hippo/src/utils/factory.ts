@@ -5,6 +5,10 @@ export interface Algorithm {
 /* AlgorithmFactory is a helper to add and get algorithm implementations. */
 export class AlgorithmFactory<T extends Algorithm> {
 
+  constructor(...items: T[]) {
+    items.forEach(i => this.add(i))
+  }
+
   private readonly registry = new Map<string, T>()
 
   protected static algorithmsMatch(a: Algorithm, b: Algorithm) {

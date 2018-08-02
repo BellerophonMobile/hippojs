@@ -54,6 +54,11 @@ export interface Credentialer {
  * implementations.
  */
 export class CredentialerFactory extends AlgorithmFactory<Credentialer> {
+  /* Creates a new factory with the given Credentialers */
+  constructor(...credentialers: Credentialer[]) {
+    super(...credentialers)
+  }
+
   /* generate creates a new set of credentials with the given algorithm. */
   generate(algorithm: string): Promise<Credentials> {
     return this.get(algorithm).generate()

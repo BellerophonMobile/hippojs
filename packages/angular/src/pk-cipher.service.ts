@@ -1,43 +1,32 @@
-import { Inject, Injectable, Optional } from '@angular/core'
+import { Injectable } from '@angular/core'
 
-import { Decrypter, Encrypter, PKCipher, PKCiphererFactory, PrivateKey,
-         PublicKey } from '@bellerophon-mobile/hippo'
-import { RSAPKCipherer } from '@bellerophon-mobile/hippo/webcrypto'
-
-import { ExtractableToken } from './extractable.token'
+import {
+  Decrypter, Encrypter, PKCipher, PrivateKey, PublicKey,
+} from '@bellerophon-mobile/hippo'
 
 /**
  * PKCipherService provides methods to manage and create PKCipherer
  * implementations.
  */
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class PKCipherService {
-  constructor(@Optional() @Inject(ExtractableToken) extractable?: boolean) {
-    this.factory.add(new RSAPKCipherer(!!extractable))
-  }
-
-  private readonly factory = new PKCiphererFactory()
-
   /* generate creates a new PKCipher with the given algorithm. */
-  generate(algorithm: string): Promise<PKCipher> {
-    return this.factory.generate(algorithm)
+  generate(_algorithm: string): Promise<PKCipher> {
+    throw new Error('not implemented, import WebCrytpo module')
   }
 
   /* create wraps the given keys as a PKCipher. */
-  create(publicKey: PublicKey, privateKey: PrivateKey): Promise<PKCipher> {
-    return this.factory.create(publicKey, privateKey)
+  create(_publicKey: PublicKey, _privateKey: PrivateKey): Promise<PKCipher> {
+    throw new Error('not implemented, import WebCrytpo module')
   }
 
   /* createEncrypter wraps the given PublicKey as an Encrypter. */
-  createEncrypter(publicKey: PublicKey): Promise<Encrypter> {
-    return this.factory.createEncrypter(publicKey)
+  createEncrypter(_publicKey: PublicKey): Promise<Encrypter> {
+    throw new Error('not implemented, import WebCrytpo module')
   }
 
   /* createDecrypter wraps the given PrivateKey as a Decrypter. */
-  createDecrypter(privateKey: PrivateKey): Promise<Decrypter> {
-    return this.factory.createDecrypter(privateKey)
+  createDecrypter(_privateKey: PrivateKey): Promise<Decrypter> {
+    throw new Error('not implemented, import WebCrytpo module')
   }
-
 }

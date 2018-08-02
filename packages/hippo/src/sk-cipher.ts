@@ -50,6 +50,11 @@ export interface SKCipherer {
  * implementations.
  */
 export class SKCiphererFactory extends AlgorithmFactory<SKCipherer> {
+  /* Creates a new factory with the given SKCipherers */
+  constructor(...cipherers: SKCipherer[]) {
+    super(...cipherers)
+  }
+
   /* generate creates a new SKCipher with the given algorithm. */
   generate(algorithm: string): Promise<SKCipher> {
     return this.get(algorithm).generate()

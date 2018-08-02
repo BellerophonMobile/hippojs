@@ -23,15 +23,10 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@bellerophon-mobile/hippo": [
-        "dist/hippo"
-      ],
-      "@bellerophon-mobile/hippo/webcrypto": [
-        "dist/hippo/webcrypto"
-      ],
-      "@bellerophon-mobile/angular-hippo": [
-        "dist/angular"
-      ]
+      "@bellerophon-mobile/hippo": ["dist/hippo"],
+      "@bellerophon-mobile/hippo/webcrypto": ["dist/hippo/webcrypto"],
+      "@bellerophon-mobile/angular-hippo": ["dist/angular"],
+      "@bellerophon-mobile/angular-hippo/webcrypto": ["dist/angular/webcrypto"],
     }
   }
 }
