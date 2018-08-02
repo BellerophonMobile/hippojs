@@ -1,6 +1,6 @@
 {
   "name": "@bellerophon-mobile/angular-hippo",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Angular wrappers for cryptography functions, with a simple chained certificate",
   "author": "Bellerophon Mobile, LLC.",
   "license": "MIT",
@@ -8,9 +8,10 @@
     "type": "git",
     "url": "https://github.com/BellerophonMobile/hippojs.git"
   },
+  "sideEffects": false,
   "peerDependencies": {
     "@angular/common": "^6.1.0",
     "@angular/core": "^6.1.0",
-    "@bellerophon-mobile/hippo": "^0.3.2"
+    "@bellerophon-mobile/hippo": "^0.4.0"
   }
 }
