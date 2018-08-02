@@ -18,24 +18,24 @@ const testPrivateKey = new PrivateKey('ecdsa-p256', {
 
 describe('PublicKey', () => {
   it('should parse JSON', () => {
-    const key = PublicKey.fromJSON(testPublicKeyJSON)
+    const key = PublicKey.fromJSON(JSON.parse(testPublicKeyJSON))
     expect(key).toEqual(testPublicKey)
   })
 
   it('should serialize to JSON', () => {
-    const json = testPublicKey.toJSON()
+    const json = JSON.stringify(testPublicKey.toJSON())
     expect(json).toEqual(testPublicKeyJSON)
   })
 })
 
 describe('PrivateKey', () => {
   it('should parse JSON', () => {
-    const key = PrivateKey.fromJSON(testPrivateKeyJSON)
+    const key = PrivateKey.fromJSON(JSON.parse(testPrivateKeyJSON))
     expect(key).toEqual(testPrivateKey)
   })
 
   it('should serialize to JSON', () => {
-    const json = testPrivateKey.toJSON()
+    const json = JSON.stringify(testPrivateKey.toJSON())
     expect(json).toEqual(testPrivateKeyJSON)
   })
 })

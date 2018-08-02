@@ -30,7 +30,7 @@ const testPublicKey = new PublicKey('ecdsa-p256', {
 describe('Certificate', () => {
 
   it('should deserialize properly', () => {
-    const cert = Certificate.fromJSON(testCertJSON)
+    const cert = Certificate.fromJSON(JSON.parse(testCertJSON))
     expect(cert).toEqual(testCert)
   })
 

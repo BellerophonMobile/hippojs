@@ -55,8 +55,8 @@ export class RootComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         ([pk, sk]) => {
-          this.publicKey = this.pretty(pk.toJSON())
-          this.privateKey = this.pretty(sk.toJSON())
+          this.publicKey = this.pretty(JSON.stringify(pk.toJSON()))
+          this.privateKey = this.pretty(JSON.stringify(sk.toJSON()))
         },
         err => this.error = err,
       )

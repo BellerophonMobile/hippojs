@@ -1,5 +1,17 @@
 import { validateTypes } from './utils/'
 
+/* PublicKeyJSON is the canonical JSON serialization of a PublicKey. */
+export interface PublicKeyJSON {
+  readonly Algorithm: string
+  readonly Public: any
+}
+
+/* PrivateKeyJSON is the canonical JSON serialization of a PrivateKey. */
+export interface PrivateKeyJSON {
+  readonly Algorithm: string
+  readonly Private: any
+}
+
 /**
  * PublicKey is a structure for importing and exporting public keys.
  *
@@ -15,23 +27,22 @@ export class PublicKey {
     public readonly data: any,
   ) {}
 
-  /* fromJSON parses a public key from the given JSON string. */
-  static fromJSON(json: string): PublicKey {
-    const key = JSON.parse(json)
-    validateTypes(key, {
+  /* fromJSON parses a public key from the given JSON representation. */
+  static fromJSON(data: PublicKeyJSON): PublicKey {
+    validateTypes(data, {
       Algorithm: 'string',
-      Public: 'object',
+      Public: 'defined',
     })
 
-    return new PublicKey(key.Algorithm, key.Public)
+    return new PublicKey(data.Algorithm, data.Public)
   }
 
-  /* toJSON serializes this public key to a JSON string. */
-  toJSON(): string {
-    return JSON.stringify({
+  /* toJSON serializes this public key to a JSON representation. */
+  toJSON(): PublicKeyJSON {
+    return {
       Algorithm: this.algorithm,
       Public: this.data,
-    })
+    }
   }
 }
 
@@ -49,22 +60,21 @@ export class PrivateKey {
     public readonly data: any,
   ) {}
 
-  /* fromJSON parses a private key from the given JSON string. */
-  static fromJSON(json: string): PrivateKey {
-    const key = JSON.parse(json)
-    validateTypes(key, {
+  /* fromJSON parses a private key from the given JSON representation. */
+  static fromJSON(data: PrivateKeyJSON): PrivateKey {
+    validateTypes(data, {
       Algorithm: 'string',
-      Private: 'object',
+      Private: 'defined',
     })
 
-    return new PrivateKey(key.Algorithm, key.Private)
+    return new PrivateKey(data.Algorithm, data.Private)
   }
 
-  /* toJSON serializes this private key to a JSON string. */
-  toJSON(): string {
-    return JSON.stringify({
+  /* toJSON serializes this private key to a JSON representation. */
+  toJSON(): PrivateKeyJSON {
+    return {
       Algorithm: this.algorithm,
       Private: this.data,
-    })
+    }
   }
 }
