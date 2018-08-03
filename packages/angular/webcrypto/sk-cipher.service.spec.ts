@@ -3,7 +3,7 @@ import { inject, TestBed } from '@angular/core/testing'
 import { PrivateKey } from '@bellerophon-mobile/hippo'
 import { AESSKCipher } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { ExtractableToken } from './extractable.token'
+import { EXTRACTABLE } from './extractable.token'
 import { WebCryptoSKCipherService } from './sk-cipher.service'
 
 const testCBCKey = new PrivateKey('aes-256-cbc', 'FbVNOra6lvpnAeqyHO-sllTJiFGBe0YjiqyNvqTChPg')
@@ -13,7 +13,7 @@ describe('WebCryptoSKCipherService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: ExtractableToken, useValue: true },
+        { provide: EXTRACTABLE, useValue: true },
         WebCryptoSKCipherService,
       ],
     })

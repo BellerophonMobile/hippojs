@@ -3,7 +3,7 @@ import { inject, TestBed } from '@angular/core/testing'
 import { PrivateKey, PublicKey } from '@bellerophon-mobile/hippo'
 import { RSAPKCipher } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { ExtractableToken } from './extractable.token'
+import { EXTRACTABLE } from './extractable.token'
 import { WebCryptoPKCipherService } from './pk-cipher.service'
 
 // tslint:disable:max-line-length
@@ -28,7 +28,7 @@ describe('WebCryptoPKCipherService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: ExtractableToken, useValue: true },
+        { provide: EXTRACTABLE, useValue: true },
         WebCryptoPKCipherService,
       ],
     })

@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 
 import {
-  ExtractableToken, HippoWebCryptoModule,
+  EXTRACTABLE, HippoWebCryptoModule,
 } from '@bellerophon-mobile/angular-hippo/webcrypto'
 
 import { RootComponent } from './root.component'
@@ -16,7 +16,7 @@ import { RootComponent } from './root.component'
     HippoWebCryptoModule.forRoot(),
   ],
   providers: [
-    { provide: ExtractableToken, useValue: true },
+    { provide: EXTRACTABLE, useValue: true },
   ],
   declarations: [RootComponent],
   bootstrap: [RootComponent],

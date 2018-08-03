@@ -5,7 +5,7 @@ import {
 } from '@bellerophon-mobile/hippo'
 import { RSAPKCipherer } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { ExtractableToken } from './extractable.token'
+import { EXTRACTABLE } from './extractable.token'
 
 /**
  * PKCipherService provides methods to manage and create PKCipherer
@@ -13,7 +13,7 @@ import { ExtractableToken } from './extractable.token'
  */
 @Injectable({ providedIn: 'root' })
 export class WebCryptoPKCipherService {
-  constructor(@Optional() @Inject(ExtractableToken) extractable?: boolean) {
+  constructor(@Optional() @Inject(EXTRACTABLE) extractable?: boolean) {
     this.factory.add(new RSAPKCipherer(!!extractable))
   }
 

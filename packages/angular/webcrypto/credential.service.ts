@@ -5,7 +5,7 @@ import {
 } from '@bellerophon-mobile/hippo'
 import { ECDSACredentialer } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { ExtractableToken } from './extractable.token'
+import { EXTRACTABLE } from './extractable.token'
 
 /**
  * CredentialerService provides methods to manage and create Credentialer
@@ -13,7 +13,7 @@ import { ExtractableToken } from './extractable.token'
  */
 @Injectable({ providedIn: 'root' })
 export class WebCryptoCredentialService {
-  constructor(@Optional() @Inject(ExtractableToken) extractable?: boolean) {
+  constructor(@Optional() @Inject(EXTRACTABLE) extractable?: boolean) {
     this.factory.add(new ECDSACredentialer(!!extractable))
   }
 

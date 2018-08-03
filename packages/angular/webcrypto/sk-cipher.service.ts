@@ -5,7 +5,7 @@ import {
 } from '@bellerophon-mobile/hippo'
 import { AESSKCipherer } from '@bellerophon-mobile/hippo/webcrypto'
 
-import { ExtractableToken } from './extractable.token'
+import { EXTRACTABLE } from './extractable.token'
 
 /**
  * SKCiphererService provides methods to manage and create SKCipherer
@@ -13,7 +13,7 @@ import { ExtractableToken } from './extractable.token'
  */
 @Injectable({ providedIn: 'root' })
 export class WebCryptoSKCipherService {
-  constructor(@Optional() @Inject(ExtractableToken) extractable?: boolean) {
+  constructor(@Optional() @Inject(EXTRACTABLE) extractable?: boolean) {
     this.factory.add(new AESSKCipherer(AES_256_CBC, !!extractable))
     this.factory.add(new AESSKCipherer(AES_256_GCM, !!extractable))
   }
